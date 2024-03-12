@@ -13,10 +13,10 @@ return {
         create_autocmd = false,
       })
       vim.api.nvim_create_autocmd({
-        "WinScrolled",
+        -- "WinScrolled",
         "BufWinEnter",
         "CursorHold",
-        "InsertLeave",
+        -- "InsertLeave",
       }, {
         group = vim.api.nvim_create_augroup("barbecue.updater", {}),
         callback = function()
