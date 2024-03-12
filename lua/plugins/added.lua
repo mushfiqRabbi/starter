@@ -28,6 +28,9 @@ return {
   {
     "chrisgrieser/nvim-spider",
     lazy = true,
+    opts = {
+      skipInsignificantPunctuation = false,
+    },
     keys = {
       {
         "e",
@@ -50,5 +53,14 @@ return {
         mode = { "n", "o", "x" },
       },
     },
+  },
+  {
+    "dstein64/nvim-scrollview",
+    event = "VeryLazy",
+    config = function()
+      require("scrollview").setup({
+        winblend_gui = 50,
+      })
+    end,
   },
 }
