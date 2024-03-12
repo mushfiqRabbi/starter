@@ -3,3 +3,5 @@
 -- Add any additional options here
 
 vim.g.root_spec = { "lsp", { ".git", "lua", ".root" }, "cwd" }
+vim.opt.sidescrolloff = 0
+vim.opt.wrap = true

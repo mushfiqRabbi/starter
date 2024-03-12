@@ -5,6 +5,7 @@ return {
       options = {
         always_show_bufferline = true,
         sort_by = "insert_after_current",
+        separator_style = "slope",
       },
     },
   },
@@ -85,13 +86,13 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     opts = function(_, opts)
-      opts.options.component_separators = "|"
-      opts.options.section_separators = ""
+      -- opts.options.component_separators = "|"
+      -- opts.options.section_separators = ""
       opts.sections.lualine_y = {
-        { "progress", padding = { left = 1, right = 1 } },
+        { "progress" },
       }
       opts.sections.lualine_z = {
-        { "location", padding = { left = 1, right = 1 } },
+        { "location" },
       }
     end,
   },
