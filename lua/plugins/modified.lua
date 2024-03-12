@@ -36,9 +36,16 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
       opts.ensure_installed = {
+        "bash",
         "c",
+        "diff",
         "lua",
+        "luadoc",
+        "luap",
+        "markdown",
+        "markdown_inline",
         "query",
+        "regex",
         "vim",
         "vimdoc",
       }
