@@ -3,6 +3,7 @@ return {
     "akinsho/bufferline.nvim",
     opts = {
       options = {
+        always_show_bufferline = true,
         sort_by = "insert_after_current",
       },
     },
@@ -12,14 +13,6 @@ return {
     "nvim-neo-tree/neo-tree.nvim",
     opts = {
       close_if_last_window = true,
-    },
-  },
-  {
-    "akinsho/bufferline.nvim",
-    opts = {
-      options = {
-        always_show_bufferline = true,
-      },
     },
   },
   {
@@ -86,6 +79,55 @@ return {
         documentation = require("cmp").config.window.bordered({
           border = "single",
         }),
+      },
+    },
+  },
+  {
+    "nvim-lualine/lualine.nvim",
+    opts = function(_, opts)
+      table.insert(opts.sections.lualine_x, "filetype")
+      opts.sections.lualine_y = {
+        { "progress", padding = { left = 1, right = 1 } },
+      }
+      opts.sections.lualine_z = {
+        { "location", padding = { left = 1, right = 1 } },
+      }
+    end,
+  },
+  {
+    "folke/noice.nvim",
+    opts = {
+      views = {
+        popupmenu = {
+          border = {
+            style = "single",
+          },
+        },
+        cmdline_popupmenu = {
+          border = {
+            style = "single",
+          },
+        },
+        popup = {
+          border = {
+            style = "single",
+          },
+        },
+        cmdline_popup = {
+          border = {
+            style = "single",
+          },
+        },
+        hover = {
+          border = {
+            style = "single",
+          },
+        },
+        confirm = {
+          border = {
+            style = "single",
+          },
+        },
       },
     },
   },
