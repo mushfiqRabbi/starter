@@ -12,13 +12,6 @@ return {
     "nvim-neo-tree/neo-tree.nvim",
     opts = {
       close_if_last_window = true,
-      filesystem = {
-        filtered_items = {
-          hide_dotfiles = false,
-          hide_gitignored = false,
-          hide_hidden = false,
-        },
-      },
     },
   },
   {
@@ -35,6 +28,7 @@ return {
       on_open = function(win)
         vim.api.nvim_win_set_config(win, {
           focusable = false,
+          border = "single",
         })
       end,
     },
@@ -77,8 +71,22 @@ return {
     "ahmedkhalf/project.nvim",
     opts = {
       manual_mode = false,
-      detection_methods = { "pattern", "lsp" },
-      patterns = { ".root", ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json" },
+      detection_methods = { "lsp", "pattern" },
+      patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json", ".root" },
+    },
+  },
+
+  {
+    "hrsh7th/nvim-cmp",
+    opts = {
+      window = {
+        completion = require("cmp").config.window.bordered({
+          border = "single",
+        }),
+        documentation = require("cmp").config.window.bordered({
+          border = "single",
+        }),
+      },
     },
   },
 }
