@@ -5,7 +5,6 @@ return {
       options = {
         always_show_bufferline = true,
         sort_by = "insert_after_current",
-        separator_style = "slope",
       },
     },
   },
@@ -72,6 +71,8 @@ return {
 
   {
     "hrsh7th/nvim-cmp",
+    -- TODO: Have to remove this url
+    url = "https://github.com/GustawXYZ/nvim-cmp",
     opts = {
       window = {
         completion = require("cmp").config.window.bordered({
@@ -81,13 +82,53 @@ return {
           border = "single",
         }),
       },
+      view = {
+        entries = { name = "custom", selection_order = "near_cursor" },
+      },
+      mapping = require("cmp").mapping.preset.insert({
+        ["<C-Space>"] = require("cmp").mapping({
+          i = function(fallback)
+            if require("cmp").visible() then
+              require("cmp").close()
+            elseif not require("cmp").visible() then
+              require("cmp").complete()
+            else
+              fallback()
+            end
+          end,
+        }),
+        ["<down>"] = require("cmp").mapping({
+          i = function(fallback)
+            if require("cmp").visible() then
+              require("cmp").select_next_item({
+                behavior = require("cmp").SelectBehavior.Select,
+                preserve_mapping_verticality = true,
+              })
+            else
+              fallback()
+            end
+          end,
+        }),
+        ["<up>"] = require("cmp").mapping({
+          i = function(fallback)
+            if require("cmp").visible() then
+              require("cmp").select_prev_item({
+                behavior = require("cmp").SelectBehavior.Select,
+                preserve_mapping_verticality = true,
+              })
+            else
+              fallback()
+            end
+          end,
+        }),
+      }),
     },
   },
   {
     "nvim-lualine/lualine.nvim",
     opts = function(_, opts)
-      -- opts.options.component_separators = "|"
-      -- opts.options.section_separators = ""
+      opts.options.component_separators = "|"
+      opts.options.section_separators = ""
       opts.sections.lualine_y = {
         { "progress" },
       }
