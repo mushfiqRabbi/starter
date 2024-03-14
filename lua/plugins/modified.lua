@@ -206,11 +206,17 @@ return {
       opts.defaults.mappings.i["<a-t>"] = false
       opts.defaults.mappings.i["<c-x>"] = false
       opts.defaults.mappings.n["<c-x>"] = false
+      opts.defaults.mappings.i["<a-k>"] = false
+      opts.defaults.mappings.n["<a-k>"] = false
       opts.defaults.mappings.i["<c-t>"] = actions.select_tab
       opts.defaults.mappings.i["<C-f>"] = actions.preview_scrolling_right
       opts.defaults.mappings.n["<c-f>"] = actions.preview_scrolling_right
-      opts.defaults.mappings.i["<c-b>"] = actions.preview_scrolling_left
+      opts.defaults.mappings.i["<a-f>"] = actions.results_scrolling_right
+      opts.defaults.mappings.n["<a-f>"] = actions.results_scrolling_right
+      opts.defaults.mappings.i["<C-b>"] = actions.preview_scrolling_left
       opts.defaults.mappings.n["<c-b>"] = actions.preview_scrolling_left
+      opts.defaults.mappings.i["<a-b>"] = actions.results_scrolling_left
+      opts.defaults.mappings.n["<a-b>"] = actions.results_scrolling_left
       opts.defaults.mappings.i["<c-q>"] = open_with_trouble
       opts.defaults.mappings.n["<c-q>"] = open_with_trouble
       opts.defaults.mappings.i["<a-q>"] = open_selected_with_trouble
@@ -218,6 +224,9 @@ return {
       opts.defaults.mappings.i["<c-s>"] = actions.select_horizontal
       opts.defaults.mappings.n["<c-s>"] = actions.select_horizontal
     end,
+    keys = {
+      { "<leader>/", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Search in buffer" },
+    },
   },
   {
     "nvimdev/dashboard-nvim",
@@ -310,6 +319,16 @@ return {
           condition = function(ctx)
             return not vim.fs.find({ ".codespell-ignore" }, { path = ctx.filename, upward = true })[1]
           end,
+        },
+      },
+    },
+  },
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      diagnostics = {
+        float = {
+          border = "single",
         },
       },
     },

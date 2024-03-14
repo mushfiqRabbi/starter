@@ -16,7 +16,7 @@ return {
         -- "WinScrolled",
         "BufWinEnter",
         "CursorHold",
-        -- "InsertLeave",
+        "InsertLeave",
       }, {
         group = vim.api.nvim_create_augroup("barbecue.updater", {}),
         callback = function()
@@ -28,9 +28,9 @@ return {
   {
     "chrisgrieser/nvim-spider",
     lazy = true,
-    opts = {
-      skipInsignificantPunctuation = false,
-    },
+    -- opts = {
+    --   skipInsignificantPunctuation = false,
+    -- },
     keys = {
       {
         "e",
@@ -74,5 +74,9 @@ return {
         return vim.fn["codeium#Clear"]()
       end, { expr = true, silent = true })
     end,
+  },
+  {
+    "HiPhish/rainbow-delimiters.nvim",
+    event = "VeryLazy",
   },
 }
