@@ -3,6 +3,7 @@ return {
     "akinsho/bufferline.nvim",
     opts = {
       options = {
+        always_show_bufferline = true,
         sort_by = "insert_after_current",
       },
     },
@@ -12,6 +13,15 @@ return {
     "nvim-neo-tree/neo-tree.nvim",
     opts = {
       close_if_last_window = true,
+      window = {
+        position = "float",
+        popup = {
+          size = {
+            height = "80%",
+            width = "20%",
+          },
+        },
+      },
     },
   },
   {
